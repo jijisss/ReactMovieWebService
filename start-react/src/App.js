@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 function App() {
   return null;
-=======
 import { useEffect, useState } from "react";
 
 function App() {
@@ -33,7 +31,6 @@ function App() {
       <button onClick={onClick}>Click me!</button>
     </div>
   );
->>>>>>> main
 }
 
 export default App;
