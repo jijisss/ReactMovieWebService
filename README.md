@@ -92,3 +92,21 @@
    32. style을 적용시키고 싶은 부분에 className을 정해준다. 
        -className도 모듈화해서 사용이 가능.
        -creact-react-app은 랜덤한 클래스 이름을 만들어서 붙여줌. 같은 클래스 이름을 사용하더라도 문제되지 않음.
+   <!-- 22-09-28 -->
+   33. useEffect() = 코드를 언제 실행할지 선택할 수 있게 해줌. 코드를 한번만 실행하거나 특정한 아이템에 변화가 있을때 실행하도록.
+   1. 코드를 한번만 실행함 ([]를 비워놓는다면.)
+   2. 한개의 아이템만 지켜보도록함.
+   3. 여러개의 아이템을 지켜보도록함.
+   -두개의 argument를 인자로 가짐. 
+   -첫번째 argument: EventCallback 우리가 실행시키고 싶은 코드 
+   -두번째 argument: DependencyList react.js가 지켜봐야하는것들 []
+   ex) useEffect(() => {
+
+   }, []);
+   []안에 원하는걸 뭐든지 지켜보도록 적어줄 수 있음.
+
+   34. Cleanup function = 함수가 종료될 때 코드를 실행할 수 있게 해준다. useEffect 함수 내에서 사용.
+   ex) useEffect(() => {
+        console.log("hi);
+        return () => console.log("bye");
+   }, []);
