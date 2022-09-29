@@ -63,11 +63,12 @@
         text: PropTypes.string,
         fontSize: PropTypes.number,
    };
-       -만약 이 prop들을 정확히 "갖고 있어야만 한다"는것을 확실히 하고 싶다면 isRequierd를 붙여주면 됨.
+   -만약 이 prop들을 정확히 "갖고 있어야만 한다"는것을 확실히 하고 싶다면 isRequierd를 붙여주면 됨.
    ex) Btn.propTypes = {
         text: PropTypes.string,isRequierd,
         fontSize: PropTypes.number,isRequierd,
    }; 
+   -array형태를 갖고있어야 한다면 arrayOf(PropTypes.string)의 형태로 작성해주면됨.
    (PropTypes를 사용하려면 script를 설치해야함.)
    <!-- creact-react-app -->
    22. creact-react-app으로 파일을 생성하려면 cmd창에 다음과 같이 작성해야한다.(파일 경로 설정 가능)
@@ -110,3 +111,58 @@
         console.log("hi);
         return () => console.log("bye");
    }, []);
+   <!-- 22-09-29 -->
+   35. map() = 자바스크립트 함수로, 하나의 array에 있는 모든 item을 원하든 무엇이든지로 바꿔주는 역할을 한다. 그리고 새로운 array로 return 해준다.
+   -첫번째 argument는 value로, 현재의 item을 가져올 수 있음.
+   -두번째 argument로는 index를 받아옴.
+   -map을 쓸때마다 key(고유한 값)를 element에 줘야함.(중요)
+   -key는 React.js에서만, map안에서 component들을 render할 때 사용하는것임.
+   ex) ["there", "are", "you", "are", "how", "hello"].map((item) =>
+        item.toUpperCase()); => ["THERE", "ARE", "YOU", "ARE", "HOW", "HELLO"]
+        
+   36. async(), await = then()을 쓰는것과 똑같음. await는 async함수 내부에 있지 않으면 사용할 수 없음.
+   ex) const getMovies = async () => {
+        const json = await (
+        await fetch(
+            `https:abc.abc.abc/abc/abcabcabc`
+            )
+        ).json();
+        setMovies(json.data.movies);
+        setLoading(false);
+   };
+
+   37. props의 이름은 원하는 대로 지으면 된다.
+   38. React Router = React.js에서 페이지 내에서 다른 페이지로 이동할 수 있게 해준다.
+   -설치하는 방법 : npm install react-router-dom
+   -사용하는 방법 : 아래와 같이 몇가지를 import 해와야한다.
+    import {
+        BrowserRouter as Router,
+        Switch,
+        Route,
+        Link
+    } from "react-router-dom";
+   -Router에는 두가지가 있다. url의 생김새가 다름.
+   1.Hash Router : #가 붙음. 2.BrowserRouter : 일반적인 url 
+   -router를 render할 파일을 생성해준다. ex) App.js => App.js에서 router를 렌더링 할것임.
+   -아래와 같은 방식으로 사용한다.
+   function App() {
+        return (
+            <Router>
+                <Routes>
+                    <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route>
+                    <Route path="/movie/:id" element={<Detail />}></Route>
+                </Routes>
+            </Router>
+        );
+    }
+    
+    39. Link = 브라우저 새로고침 없이도 유저를 다른 페이지로 이동시켜주는 컴포넌트.
+    ex) <Link to={`/movie/${id}`}>{title}</Link>
+    40. 다이나믹 url = url에 변수를 넣을 수 있다는 뜻.
+    ex) path="/movie/:id" :을 작성하고 뒤에 변수이름을 적어야 변수로 인식함.
+    41. useParams = url에서 변화하는 부분만 넘겨주는 함수.
+    ex) const { id } = useParams();
+    42. slice() = 시작값과 끝값을 적으면 length를 잘라준다.
+    ex) summary.slice(0, 235) => 처음부터 235번째 length까지 잘라줌.
+    43. npm run deploy = 웹사이트를 github로 deploy해준다.
+
